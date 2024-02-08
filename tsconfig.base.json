@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.paths.json",
+  "files": [
+    "src2/index.tsx"
+  ],
+//  "exclude": ["cypress", "docs" ,"openapi", "dist", "node_modules", "build", "lib"],
+  "compilerOptions": {
+//    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+//    "checkJs": false,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "strict": true,
+  },
+}

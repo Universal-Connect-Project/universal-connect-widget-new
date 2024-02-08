@@ -1,9 +1,9 @@
- // LOAD FIRST!
+// LOAD FIRST!
 import './config/init'
 
 import React from 'react'
 import _get from 'lodash/get'
-import ReactDOM from 'react-dom'
+// import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import theme from './constants/Style'
 import AppWrapper from './components/app/AppWrapper'
@@ -22,7 +22,7 @@ import { registerAxiosInterceptors } from './config/axios'
 import { updateTitleWithWidget } from './utils/Widget'
 import {ConnectWidget as Connect} from './widgets/desktop/Connect'
 
-registerAxiosInterceptors(Store.dispatch)
+ registerAxiosInterceptors(Store.dispatch)
 
 window.logger = {
   warn(msg){
@@ -121,20 +121,21 @@ if (widgetConfig.type !== 'master') {
   updateTitleWithWidget(widgetConfig.type)
 }
 
-ReactDOM.render(
-  <Provider store={Store}>
-    <TokenProvider tokenOverrides={{}}>
-      <GlobalErrorBoundary>
-        <WidgetDimensionObserver
-          heightOffset={widgetConfig.type === 'master' ? theme.MasterTopBarHeight : 0}
-        >
-          <AppWrapper>
-            <Connect />
-          </AppWrapper>
-        </WidgetDimensionObserver>
-      </GlobalErrorBoundary>
-    </TokenProvider>
-  </Provider>,
-  document.getElementById('root'),
-)
+const ConnectWidget = () => {
+ return (
+   <Provider store={Store}>
+      <TokenProvider tokenOverrides={{}}>
+        <GlobalErrorBoundary>
+          <WidgetDimensionObserver
+            heightOffset={widgetConfig.type === 'master' ? theme.MasterTopBarHeight : 0}
+          >
+            <AppWrapper>
+              <Connect />
+            </AppWrapper>
+          </WidgetDimensionObserver>
+        </GlobalErrorBoundary>
+      </TokenProvider>
+    </Provider>);
+}
 
+export { ConnectWidget };
