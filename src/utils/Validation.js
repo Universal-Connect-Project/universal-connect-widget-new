@@ -18,7 +18,7 @@ import { formatNumber } from './Formatting'
 
 // HACK: this is temporary for backward compatibility until everywhere that uses Validation.validate() can be updated
 const getTemporaryIntlContext = () => {
-  logger.warn(`Deprecated, please provide a valid instance of intl`)
+  window.logger.warn(`Deprecated, please provide a valid instance of intl`)
 
   const intlProvider = new IntlProvider({ locale: 'en', messages: {} }, {})
 

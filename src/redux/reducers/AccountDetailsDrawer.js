@@ -115,7 +115,7 @@ const updateEditForm = (state, action) => {
   // they are editing. The result is a combination of existing account fields,
   // preserving any fields changed by the form, and the updated account_type.
   // Hence all of the object spreading.
-  if (action.payload.hasOwnProperty('account_type')) {
+  if (Object.prototype.hasOwnProperty.call(action.payload, 'account_type')) {
     const editedAccountData = { ...state.account, ...state.form, ...action.payload }
 
     return {

@@ -35,10 +35,15 @@
     "build-orig": "react-app-rewired build",
     "build-android": "npx cross-env mobile=true react-app-rewired build && npx cap sync android",
     "build-ios": "npx cross-env mobile=true react-app-rewired build && npx cap sync ios",
-    "test": "react-app-rewired test --watchAll",
+    "test-watch": "react-app-rewired test --watchAll",
+    "test": "jest --no-coverage",
     "coverage": "npm test -- --verbose --coverage --watchAll",
     "test-clear": "npm test -- --clearCache",
-    "keys": "node -e 'console.log(`key: ${crypto.randomBytes(32).toString(\"hex\")}\n IV: ${crypto.randomBytes(16).toString(\"hex\")}`)'"
+    "keys": "node -e 'console.log(`key: ${crypto.randomBytes(32).toString(\"hex\")}\n IV: ${crypto.randomBytes(16).toString(\"hex\")}`)'",
+    "lint": "eslint ./src --fix --ext .js,.jsx,.ts,.tsx",
+    "lint-check": "eslint --cache --ext .js,.jsx,.ts,.tsx",
+    "precommit": "lint-staged",
+    "prepare": "husky"
   },
   "dependencies": {
     "@babel/eslint-parser": "^7.18.2",
@@ -106,7 +111,7 @@
     "reselect": "^2.5.4",
     "rxjs": "^6.6.2",
     "stream-browserify": "^3.0.0",
-    "typescript": "^5.0.4",
+    "typescript": "^5.2.2",
     "url": "^0.11.3"
   },
   "eslintConfig": {
@@ -142,9 +147,14 @@
     "cypress": "^13.6.2",
     "eslint-config-mx": "^4.0.0",
     "eslint-plugin-cypress": "^2.15.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-redux-namespaced-actions": "^1.0.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.1",
+    "husky": "^9.0.10",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
     "react-app-rewired": "^2.2.1",
     "react-scripts": "^5.0.1",
     "terser-webpack-plugin": "^5.3.7",
@@ -169,5 +179,10 @@
         "default": "./lib/cjs/index.js"
       }
     }
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": [
+      "npm run lint-check"
+    ]
   }
 }

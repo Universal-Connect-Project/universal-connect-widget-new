@@ -10,7 +10,7 @@ const getDefaultTheme = () => {
   const defaultTheme = {}
 
   for (const key in StyleConstants) {
-    if (StyleConstants.hasOwnProperty(key) && typeof StyleConstants[key] !== 'function') {
+    if (Object.prototype.hasOwnProperty.call(StyleConstants, key) && typeof StyleConstants[key] !== 'function') {
       defaultTheme[key] = StyleConstants[key]
     }
   }
@@ -44,7 +44,7 @@ const configThemeLoaded = (state, action) => {
   const mappedColors = {}
 
   for (const key in colors) {
-    if (state.Colors.hasOwnProperty(key.toUpperCase())) {
+    if (Object.prototype.hasOwnProperty.call(state.Colors, key.toUpperCase())) {
       mappedColors[key.toUpperCase()] = colors[key]
     }
   }
