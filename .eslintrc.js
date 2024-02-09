@@ -114,4 +114,13 @@ module.exports = {
     //   }
     // ]
   }
+//  "settings": {
+//    "react": {
+//      "version": "detect"
+//    }
+//  },
+//  "globals": {
+//    "logger": true,
+//    "spyOn": true
+//  }
 };
