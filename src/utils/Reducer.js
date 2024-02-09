@@ -1,7 +1,7 @@
 import _isNil from 'lodash/isNil'
 
 export const createReducer = (initialState, handlers) => (state = initialState, action) => {
-  return handlers.hasOwnProperty(action.type) ? handlers[action.type](state, action) : state
+  return Object.prototype.hasOwnProperty.call(handlers, action.type) ? handlers[action.type](state, action) : state
 }
 
 /**

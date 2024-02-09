@@ -290,7 +290,7 @@ export const buildAccountFilterOptions = accounts => {
       value: account.guid,
     }
 
-    if (acc.hasOwnProperty(accountTypeName)) {
+    if (Object.prototype.hasOwnProperty.call(acc, accountTypeName)) {
       acc[accountTypeName] = acc[accountTypeName].concat(newItem)
     } else {
       acc[accountTypeName] = [newItem]

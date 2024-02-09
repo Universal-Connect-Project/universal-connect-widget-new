@@ -293,7 +293,7 @@ export function getFormFields(intl, account, member) {
 
   return fields.map(field => ({
     ...field,
-    disabled: field.hasOwnProperty('disabled') ? field.disabled : !isManagedByUser,
+    disabled: Object.prototype.hasOwnProperty.call(field, 'disabled') ? field.disabled : !isManagedByUser,
   }))
 }
 
