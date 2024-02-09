@@ -22,11 +22,11 @@ const BrokawClient = {
     this.dispatch = dispatch
 
     if (channel) {
-      logger.warn('already subscribed')
+      window.logger.warn('already subscribed')
       return
     }
     if (window.app.options && !window.app.options.brokaw_websocket_url) {
-      logger.warn('window.app.options is missing brokaw config')
+      window.logger.warn('window.app.options is missing brokaw config')
       return
     }
 
@@ -80,7 +80,7 @@ const BrokawClient = {
 
   unsubscribe() {
     if (!channel) {
-      logger.log('not subscribed')
+      window.logger.log('not subscribed')
       return
     }
 
@@ -90,7 +90,7 @@ const BrokawClient = {
       socket.disconnect(() => {
         socket = null
         channel = null
-        logger.log('unsubscribed')
+        window.logger.log('unsubscribed')
       })
     })
   },

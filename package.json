@@ -84,7 +84,7 @@
     "reselect": "^2.5.4",
     "rxjs": "^6.6.2",
     "stream-browserify": "^3.0.0",
-    "typescript": "^5.0.4",
+    "typescript": "^5.2.2",
     "url": "^0.11.3"
   },
   "eslintConfig": {
@@ -120,6 +120,8 @@
     "cypress": "^13.6.2",
     "eslint-config-mx": "^4.0.0",
     "eslint-plugin-cypress": "^2.15.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-redux-namespaced-actions": "^1.0.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.1",
