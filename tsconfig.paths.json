@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src2",
+//    "baseUrl": "./src",
 //    "paths": {
 //      "src/*": ["./*"],
 //      "clients/*": ["clients/*"],

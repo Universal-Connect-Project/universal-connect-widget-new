@@ -1,9 +1,10 @@
 {
   "name": "@ucp-npm/universal-connect-widget",
   "version": "0.1.0",
-  "source": "src2/index.tsx",
-  "main": "./dist/esm/index.js",
-  "types": "./dist/esm/types/index.d.ts",
+  "source": "src/index.tsx",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/cjs/types/index.d.ts",
   "private": false,
   "author": "UCP",
   "license": "Apache-2.0",

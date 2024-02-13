@@ -54,7 +54,7 @@ USE `.env` FILE
 
 # Running the docker container
 - there is a Dockerfile that's used to build a docker image, 
-  you can use `build.sh`, it does the build and tags the image with `uvcs`
-- credentials needs to be configured through envrionment variables. to do it, use `-e` option to pass in
-  you can use the `start-docker.sh`, it assumes the config is up to date with the `.env` file and mounts it to the container then start.
-*in your `.env` file, make sure values are encloses by quotes `"` or `'`, this is a limitation by docker
+  you can use `scripts/build-docker.sh`, it does the build and tags the image with `uvcs`
+- credentials needs to be configured through environment variables. to do it, use `-e` option to pass in
+  you can use the `scripts/start-docker.sh`, it assumes the config is up-to-date with the `.env` file and mounts it to the container then start.
+*in your `.env` file, make sure values are encloses by quotes `"` or `'`, this is a limitation of docker
