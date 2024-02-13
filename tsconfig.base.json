@@ -1,43 +1,39 @@
 {
+  "extends": "./tsconfig.paths.json",
   "compilerOptions": {
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": "src",
-    "declaration": true,
-    "esModuleInterop": true,
-    "inlineSourceMap": false,
-    "lib": ["esnext"],
-    "listEmittedFiles": false,
-    "listFiles": false,
-    "moduleResolution": "node",
-    "noFallthroughCasesInSwitch": true,
-    "pretty": true,
-    "resolveJsonModule": true,
-    "rootDir": "src",
-    "skipLibCheck": true,
+    "noImplicitAny": false,
     "strict": true,
-    "traceResolution": false,
-    "types": ["node", "jest"]
-  },
-  "compileOnSave": false,
-  "exclude": ["node_modules", "dist"],
-  "include": ["src"]
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "checkJs": true,
+    "allowJs": true,
+    "declaration": true,
+    "declarationMap": true,
+    "allowSyntheticDefaultImports": true,
+    "types": ["node", "jest", "lodash"]
 
-//  "extends": "./tsconfig.paths.json",
-//  "files": [
-//    "src/index.js"
-//  ],
-//  "exclude": ["cypress", "docs" ,"openapi", "dist", "node_modules", "build", "lib"],
-//  "compilerOptions": {
 //    "allowJs": true,
 //    "allowSyntheticDefaultImports": true,
-////    "checkJs": false,
+//    "baseUrl": "src",
 //    "declaration": true,
-//    "declarationMap": true,
 //    "esModuleInterop": true,
-//    "forceConsistentCasingInFileNames": true,
-//    "noImplicitAny": false,
+//    "inlineSourceMap": false,
+//    "lib": ["esnext"],
+//    "listEmittedFiles": false,
+//    "listFiles": false,
+//    "moduleResolution": "node",
+//    "noFallthroughCasesInSwitch": true,
+//    "pretty": true,
+//    "resolveJsonModule": true,
+//    "rootDir": "src",
 //    "skipLibCheck": true,
 //    "strict": true,
-//  },
+//    "traceResolution": false,
+  },
+
+  "files": [
+    "src/index.js"
+  ],
+  "exclude": ["cypress", "docs" ,"openapi", "dist", "node_modules", "build", "lib"],
 }

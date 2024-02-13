@@ -1,15 +1,15 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "module": "commonjs",
-    "outDir": "dist/cjs",
-    "target": "es2015"
+//    "module": "commonjs",
+//    "outDir": "dist/cjs",
+//    "target": "es2015"
 
-//    "lib": ["ES6", "DOM"],
-//    "target": "ES6",
-//    "module": "CommonJS",
-//    "moduleResolution": "Node",
-//    "outDir": "./lib/cjs",
-//    "declarationDir": "./lib/cjs/types"
+    "lib": ["ES6", "DOM"],
+    "target": "ES6",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "outDir": "./dist/cjs",
+    "declarationDir": "./dist/cjs/types"
   }
 }

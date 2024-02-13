@@ -2,9 +2,9 @@
   "name": "@ucp-npm/universal-connect-widget",
   "version": "0.1.0",
   "source": "src/index.tsx",
-  "main": "./lib/cjs/index.js",
-  "module": "./lib/esm/index.js",
-  "types": "./lib/cjs/types/index.d.ts",
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "types": "./dist/cjs/types/index.d.ts",
   "private": false,
   "author": "UCP",
   "license": "Apache-2.0",
@@ -26,12 +26,14 @@
     "Consumer"
   ],
   "scripts": {
-    "clean": "rm -rf ./lib",
-    "build": "npm run clean && npm run build:esm && npm run build:cjs",
-    "build:esm": "tsc --jsx react-jsx -p ./tsconfig.esm.json && mv lib/esm/index.js lib/esm/index.mjs",
-    "build:cjs": "tsc --jsx react-jsx -p ./tsconfig.cjs.json",
+    "clean": "rm -rf ./dist",
+    "build": "npm run clean && npm run build:esm",
+    "build-old": "npm run clean && npm run build:esm && npm run build:cjs && ./scripts/fix-npm-build.sh",
+    "build:esm": "tsc --jsx react-jsx -p ./tsconfig.esm.json && mv dist/esm/index.js dist/esm/index.mjs",
+    "build:cjs": "tsc --jsx react-jsx -p ./tsconfig.cjs.json && mv dist/cjs/index.js dist/cjs/index.cjs",
+    "build:esm-old": "tsc --jsx react-jsx -p ./tsconfig.esm.json && mv dist/esm/index.js dist/esm/index.mjs",
+    "build:cjs-old": "tsc --jsx react-jsx -p ./tsconfig.cjs.json",
     "prepack": "npm run build",
-
     "dev": "npx cross-env BROWSER=none react-app-rewired start",
     "build-orig": "react-app-rewired build",
     "build-android": "npx cross-env mobile=true react-app-rewired build && npx cap sync android",
@@ -100,8 +102,8 @@
     "phoenix": "^1.2.1",
     "posthog-js": "^1.57.2",
     "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^18.2.0",
+    "react-dom": "18.2.0",
     "react-intl": "^2.3.0",
     "react-redux": "^7.1.0",
     "redis": "^4.6.12",
@@ -141,7 +143,9 @@
     "@babel/preset-react": "^7.18.6",
     "@capacitor/cli": "^4.8.1",
     "@types/jest": "^29.5.11",
+    "@types/lodash": "^4.14.202",
     "@types/mocha": "^10.0.6",
+    "@types/react-intl": "^3.0.0",
     "babel-plugin-js-logger": "^1.0.17",
     "cross-env": "^7.0.3",
     "customize-cra": "^1.0.0",
@@ -167,17 +171,17 @@
     "doc": "docs"
   },
   "files": [
-    "lib/**/*"
+    "dist/**/*"
   ],
   "exports": {
     ".": {
       "import": {
-        "types": "./lib/esm/types/index.d.ts",
-        "default": "./lib/esm/index.mjs"
+        "types": "./dist/esm/types/index.d.ts",
+        "default": "./dist/esm/index.mjs"
       },
       "require": {
-        "types": "./lib/cjs/types/index.d.ts",
-        "default": "./lib/cjs/index.js"
+        "types": "./dist/cjs/types/index.d.ts",
+        "default": "./dist/cjs/index.cjs"
       }
     }
   },
