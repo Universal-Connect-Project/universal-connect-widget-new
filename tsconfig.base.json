@@ -6,32 +6,13 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "checkJs": true,
+    "checkJs": false,
     "allowJs": true,
     "declaration": true,
     "declarationMap": true,
     "allowSyntheticDefaultImports": true,
     "types": ["node", "jest", "lodash"]
-
-//    "allowJs": true,
-//    "allowSyntheticDefaultImports": true,
-//    "baseUrl": "src",
-//    "declaration": true,
-//    "esModuleInterop": true,
-//    "inlineSourceMap": false,
-//    "lib": ["esnext"],
-//    "listEmittedFiles": false,
-//    "listFiles": false,
-//    "moduleResolution": "node",
-//    "noFallthroughCasesInSwitch": true,
-//    "pretty": true,
-//    "resolveJsonModule": true,
-//    "rootDir": "src",
-//    "skipLibCheck": true,
-//    "strict": true,
-//    "traceResolution": false,
   },
-
   "files": [
     "src/index.js"
   ],

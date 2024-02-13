@@ -20,7 +20,7 @@ import PostMessage, { sendPostMessage } from './utils/PostMessage'
 import Store from './redux/Store'
 import { registerAxiosInterceptors } from './config/axios'
 import { updateTitleWithWidget } from './utils/Widget'
-import {ConnectWidget as Connect} from './widgets/desktop/Connect.js'
+import {ConnectWidget as Connect} from './widgets/desktop/Connect'
 
 registerAxiosInterceptors(Store.dispatch)
 
@@ -138,5 +138,5 @@ const ConnectWidget = () => {
     </Provider>);
 }
 
-import { HelloWorld } from "./widgets/HelloWorld.js";
+import { HelloWorld } from "./widgets/HelloWorld";
 export { ConnectWidget, HelloWorld };

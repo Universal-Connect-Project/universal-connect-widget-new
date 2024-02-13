@@ -28,16 +28,15 @@
   "scripts": {
     "clean": "rm -rf ./dist",
     "build": "npm run clean && npm run build:esm",
-    "build-old": "npm run clean && npm run build:esm && npm run build:cjs && ./scripts/fix-npm-build.sh",
-    "build:esm": "tsc --jsx react-jsx -p ./tsconfig.esm.json && mv dist/esm/index.js dist/esm/index.mjs",
-    "build:cjs": "tsc --jsx react-jsx -p ./tsconfig.cjs.json && mv dist/cjs/index.js dist/cjs/index.cjs",
-    "build:esm-old": "tsc --jsx react-jsx -p ./tsconfig.esm.json && mv dist/esm/index.js dist/esm/index.mjs",
-    "build:cjs-old": "tsc --jsx react-jsx -p ./tsconfig.cjs.json",
-    "prepack": "npm run build",
-    "dev": "npx cross-env BROWSER=none react-app-rewired start",
+    "build:esm": "tsc --jsx react-jsx -p ./tsconfig.esm.json && tsc-esm-fix --tsconfig ./tsconfig.esm.json && npm run copy-files-esm",
+    "build:cjs": "tsc --jsx react-jsx -p ./tsconfig.cjs.json && tsc-esm-fix --tsconfig ./tsconfig.cjs.json && mv dist/cjs/index.js dist/cjs/index.cjs && npm run copy-files-cjs",
+    "copy-files-esm": "copyfiles -u 1 \"./src/**/*.svg\" \"./src/**/*.css\" dist/esm",
+    "copy-files-cjs": "copyfiles -u 1 \"./src/**/*.svg\" \"./src/**/*.css\" dist/cjs",
     "build-orig": "react-app-rewired build",
     "build-android": "npx cross-env mobile=true react-app-rewired build && npx cap sync android",
     "build-ios": "npx cross-env mobile=true react-app-rewired build && npx cap sync ios",
+    "prepack": "npm run build",
+    "dev": "npx cross-env BROWSER=none react-app-rewired start",
     "test-watch": "react-app-rewired test --watchAll",
     "test": "jest --no-coverage",
     "coverage": "npm test -- --verbose --coverage --watchAll",
@@ -147,6 +146,7 @@
     "@types/mocha": "^10.0.6",
     "@types/react-intl": "^3.0.0",
     "babel-plugin-js-logger": "^1.0.17",
+    "copyfiles": "^2.4.1",
     "cross-env": "^7.0.3",
     "customize-cra": "^1.0.0",
     "cypress": "^13.6.2",
@@ -165,6 +165,7 @@
     "terser-webpack-plugin": "^5.3.7",
     "ts-import-plugin": "^3.0.0",
     "ts-jest": "^29.1.2",
+    "tsc-esm-fix": "^2.20.24",
     "url-loader": "^4.1.1"
   },
   "directories": {
@@ -177,7 +178,7 @@
     ".": {
       "import": {
         "types": "./dist/esm/types/index.d.ts",
-        "default": "./dist/esm/index.mjs"
+        "default": "./dist/esm/index.js"
       },
       "require": {
         "types": "./dist/cjs/types/index.d.ts",
