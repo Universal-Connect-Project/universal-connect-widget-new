@@ -17,5 +17,6 @@
   "files": [
     "src/index.js"
   ],
-  "exclude": ["cypress", "docs" ,"openapi", "dist", "node_modules", "build", "lib"],
+  "exclude": ["cypress", "docs" ,"openapi", "dist", "node_modules", "build"],
 }
+`//    "jsx": "react-jsx",

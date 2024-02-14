@@ -19,6 +19,28 @@ module.exports = override(
       SophtronApiUserSecret: JSON.stringify(process.env.SophtronApiUserSecret),
     }: {}
   })),
+  addWebpackModuleRule(
+    {
+      test: /\.m?js$/,
+      resolve: {
+        fullySpecified: false,
+      },
+      loader: 'babel-loader',
+      options: {
+        presets: [
+          [
+            "@babel/env",
+            {
+              "useBuiltIns": "entry",
+              "corejs": "3.29",
+              "modules": "commonjs"
+            }
+          ],
+          '@babel/preset-react'
+        ]
+      }
+    }
+  ),
   addWebpackModuleRule({
       test: /\.js$/,
       include: path.resolve(__dirname, 'node_modules/@kyper/'),

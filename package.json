@@ -5,10 +5,10 @@
   "type": "module",
   "main": "./dist/cjs/index.js",
   "types": "./dist/cjs/types/index.d.ts",
+  "config-overrides-path": "./config-overrides.cjs",
   "private": false,
   "author": "UCP",
   "license": "Apache-2.0",
-  "homepage": "https://github.com/Universal-Connect-Project/universal-connect-widget#readme",
   "description": "Whether you are an established financial institution with existing data providers or a one person startup the Universal Connect Project (UCP) is the right way to connect to financial services like banks, credit unions and wealth managers.",
   "bugs": {
     "url": "https://github.com/Universal-Connect-Project/universal-connect-widget/issues"
@@ -32,7 +32,7 @@
     "build:cjs": "tsc --jsx react-jsx -p ./tsconfig.cjs.json && tsc-esm-fix --tsconfig ./tsconfig.cjs.json && mv dist/cjs/index.js dist/cjs/index.cjs && npm run copy-files-cjs",
     "copy-files-esm": "copyfiles -u 1 \"./src/**/*.svg\" \"./src/**/*.css\" dist/esm",
     "copy-files-cjs": "copyfiles -u 1 \"./src/**/*.svg\" \"./src/**/*.css\" dist/cjs",
-    "build-orig": "react-app-rewired build",
+    "build-rewired": "react-app-rewired build",
     "build-android": "npx cross-env mobile=true react-app-rewired build && npx cap sync android",
     "build-ios": "npx cross-env mobile=true react-app-rewired build && npx cap sync ios",
     "prepack": "npm run build",
@@ -48,7 +48,6 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@babel/eslint-parser": "^7.18.2",
     "@babel/polyfill": "^7.0.0",
     "@babel/runtime": "^7.14.6",
     "@capacitor-community/http": "^1.4.1",
@@ -80,7 +79,6 @@
     "crypto-browserify": "^3.12.0",
     "crypto-js": "^4.2.0",
     "d3": "^7.8.5",
-    "d3-legacy": "npm:d3@^3.5.6",
     "date-fns": "^2.29.3",
     "dompurify": "^2.3.6",
     "dotenv": "^16.3.1",
