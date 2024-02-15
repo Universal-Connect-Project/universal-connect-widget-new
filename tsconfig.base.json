@@ -12,11 +12,11 @@
     "declarationMap": true,
     "allowSyntheticDefaultImports": true,
     "types": ["node", "jest", "lodash"],
-    "typeRoots": ["./node_modules/@types"]
+    "typeRoots": ["./node_modules/@types"],
+    "jsx": "react-jsx",
   },
   "files": [
     "src/index.js"
   ],
   "exclude": ["cypress", "docs" ,"openapi", "dist", "node_modules", "build"],
 }
-`//    "jsx": "react-jsx",
