@@ -22,9 +22,9 @@ module.exports = override(
   addWebpackModuleRule(
     {
       test: /\.m?js$/,
-      resolve: {
-        fullySpecified: false,
-      },
+      // resolve: {
+      //   fullySpecified: false,
+      // },
       loader: 'babel-loader',
       options: {
         presets: [
