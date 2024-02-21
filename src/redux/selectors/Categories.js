@@ -220,7 +220,7 @@ const getSelectedChildGuid = state => state.categories.selectedChildCategory.gui
 const getSelectedChildType = state => state.categories.selectedChildCategory.type
 
 const findCategoryByGuid = (guid = '', parents = [], others = [], children = []) => {
-  if (guid === '' || (parents === [] && others === [] && children === [])) return { guid: '' }
+  if (guid === '' || (parents.length === 0 && others.length === 0 && children.length === 0)) return { guid: '' }
   const matches = [...parents, ...others, ...children].filter(matchesGuid(guid, 'guid'))
 
   if (!matches.length) return { guid: '' }

@@ -1,13 +1,43 @@
 {
-  "name": "universal-connect-widget",
+  "name": "@ucp-npm/universal-connect-widget",
   "version": "0.1.0",
-  "private": true,
+  "source": "src/index.js",
+  "module": "./dist/esm/index.mjs",
+  "main": "./dist/cjs/index.cjs",
+  "types": "./dist/cjs/types/index.d.ts",
+  "config-overrides-path": "./config-overrides.cjs",
+  "type": "module",
+  "private": false,
+  "author": "UCP",
+  "license": "Apache-2.0",
+  "description": "Whether you are an established financial institution with existing data providers or a one person startup the Universal Connect Project (UCP) is the right way to connect to financial services like banks, credit unions and wealth managers.",
+  "bugs": {
+    "url": "https://github.com/Universal-Connect-Project/universal-connect-widget/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Universal-Connect-Project/universal-connect-widget.git"
+  },
+  "keywords": [
+    "Universal",
+    "Connect",
+    "Widget",
+    "Fintech",
+    "Finance",
+    "Consumer"
+  ],
   "scripts": {
-    "server": "npx ts-node server/server.js",
-    "dev": "npx cross-env BROWSER=none react-app-rewired start",
+    "clean": "rm -rf ./dist",
+    "package": "npm run clean && npm run package:esm",
+    "package:esm": "tsc --jsx react-jsx -p ./tsconfig.esm.json && tsc-esm-fix --tsconfig ./tsconfig.esm.json && mv dist/esm/index.js dist/esm/index.mjs && npm run copy-files-esm",
+    "package:cjs": "tsc --jsx react-jsx -p ./tsconfig.cjs.json && mv dist/cjs/index.js dist/cjs/index.cjs && npm run copy-files-cjs",
+    "copy-files-esm": "copyfiles -u 1 \"./src/**/*.svg\" \"./src/**/*.css\" dist/esm",
+    "copy-files-cjs": "copyfiles -u 1 \"./src/**/*.svg\" \"./src/**/*.css\" dist/cjs",
     "build": "react-app-rewired build",
     "build-android": "npx cross-env mobile=true react-app-rewired build && npx cap sync android",
     "build-ios": "npx cross-env mobile=true react-app-rewired build && npx cap sync ios",
+    "prepack": "npm run build",
+    "dev": "npx cross-env BROWSER=none react-app-rewired start",
     "test-watch": "react-app-rewired test --watchAll",
     "test": "jest --no-coverage",
     "coverage": "npm test -- --verbose --coverage --watchAll",
@@ -19,7 +49,6 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@babel/eslint-parser": "^7.18.2",
     "@babel/polyfill": "^7.0.0",
     "@babel/runtime": "^7.14.6",
     "@capacitor-community/http": "^1.4.1",
@@ -40,8 +69,10 @@
     "@kyper/tokenprovider": "^3.2.0",
     "@kyper/userfeedback": "^1.2.0",
     "@kyper/utilityrow": "^1.4.0",
+    "@types/lodash": "^4.14.202",
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
+    "@types/react-intl": "^3.0.0",
     "@types/redis": "^4.0.11",
     "assert-browserify": "^2.0.0",
     "axios": "^1.6.0",
@@ -51,7 +82,6 @@
     "crypto-browserify": "^3.12.0",
     "crypto-js": "^4.2.0",
     "d3": "^7.8.5",
-    "d3-legacy": "npm:d3@^3.5.6",
     "date-fns": "^2.29.3",
     "dompurify": "^2.3.6",
     "dotenv": "^16.3.1",
@@ -68,12 +98,12 @@
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.40",
     "mx-design-tokens": "^10.5.0",
-    "mx-react-components": "^8.4.2",
+    "mx-react-components": "^8.7.0",
     "phoenix": "^1.2.1",
     "posthog-js": "^1.57.2",
     "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^18.2.0",
+    "react-dom": "18.2.0",
     "react-intl": "^2.3.0",
     "react-redux": "^7.1.0",
     "redis": "^4.6.12",
@@ -115,6 +145,7 @@
     "@types/jest": "^29.5.11",
     "@types/mocha": "^10.0.6",
     "babel-plugin-js-logger": "^1.0.17",
+    "copyfiles": "^2.4.1",
     "cross-env": "^7.0.3",
     "customize-cra": "^1.0.0",
     "cypress": "^13.6.2",
@@ -133,7 +164,26 @@
     "terser-webpack-plugin": "^5.3.7",
     "ts-import-plugin": "^3.0.0",
     "ts-jest": "^29.1.2",
+    "tsc-esm-fix": "^2.20.24",
     "url-loader": "^4.1.1"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/types/index.d.ts",
+        "default": "./dist/esm/index.mjs"
+      },
+      "require": {
+        "types": "./dist/cjs/types/index.d.ts",
+        "default": "./dist/cjs/index.cjs"
+      }
+    }
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [

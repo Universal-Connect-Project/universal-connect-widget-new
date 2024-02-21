@@ -1,34 +1,29 @@
-module.exports = {
-  root: true,
-  env: {
+{
+  "root": true,
+  "env": {
     "browser": true,
     "node": true,
     "es6": true,
     "jest": true
   },
-  extends: [
+  "extends": [
     "eslint:recommended",
-    "plugin:react-hooks/recommended",
+    "plugin:react-hooks/recommended"
   ],
-  parser: "@typescript-eslint/parser",
-  plugins: [
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
     "jest",
     "jsx-a11y",
     "eslint-plugin-redux-namespaced-actions",
     "@typescript-eslint",
     "eslint-plugin-react"
   ],
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
   },
-  ignorePatterns: ["src/public/static/vue3.js"],
-  rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-unused-vars': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    // "no-console": "off",
-
+  "ignorePatterns": ["src/public/static/vue3.js"],
+  "rules": {
     "react/jsx-key": 0,
     "react-hooks/exhaustive-deps": 0,
     "redux-namespaced-actions/redux-namespaced-actions": 2,
@@ -84,7 +79,7 @@ module.exports = {
     "jsx-a11y/role-has-required-aria-props": 2,
     "jsx-a11y/role-supports-aria-props": 2,
     "jsx-a11y/scope": 2,
-    "jsx-a11y/tabindex-no-positive": 2,
+    "jsx-a11y/tabindex-no-positive": 2
     // "no-restricted-imports": [
     //   "error",
     //   {
@@ -123,4 +118,4 @@ module.exports = {
 //    "logger": true,
 //    "spyOn": true
 //  }
-};
+}

@@ -36,4 +36,4 @@ jobs:
 
       - name: Run Jest Tests
         run: |
-          npx react-app-rewired test --all --ci
+          npx jest --all --ci --no-coverage

@@ -16,7 +16,7 @@ dist-ssr
 *.local
 build/
 coverage/
-lib
+lib/
 
 # Editor directories and files
 .vscode/*
