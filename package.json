@@ -1,7 +1,8 @@
 {
   "name": "@ucp-npm/universal-connect-widget",
   "version": "0.1.0",
-  "source": "src/index.tsx",
+  "source": "src/index.js",
+  "module": "./dist/esm/index.mjs",
   "main": "./dist/cjs/index.cjs",
   "types": "./dist/cjs/types/index.d.ts",
   "config-overrides-path": "./config-overrides.cjs",
@@ -176,7 +177,7 @@
     ".": {
       "import": {
         "types": "./dist/esm/types/index.d.ts",
-        "default": "./dist/esm/index.js"
+        "default": "./dist/esm/index.mjs"
       },
       "require": {
         "types": "./dist/cjs/types/index.d.ts",
