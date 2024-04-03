@@ -27,10 +27,6 @@
     "clean": "rm -rf dist && rm -f ucp-npm-components*.tgz",
     "pack": "npm run clean && npm run build && npm pack",
     "test": "echo \"Error: no test specified\" && exit 0",
-    "lint": "eslint ./src --fix --ext .js,.jsx,.ts,.tsx",
-    "lint-check": "eslint --cache --ext .js,.jsx,.ts,.tsx",
-    "precommit": "lint-staged",
-    "prepare": "husky"
   },
   "author": "",
   "license": "MIT",
@@ -114,7 +110,6 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-redux-namespaced-actions": "^1.0.0",
-    "husky": "^9.0.11",
     "np": "^10.0.0",
     "rollup": "^4.12.0",
     "rollup-plugin-dts": "^6.1.0",
@@ -127,9 +122,4 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
-  "lint-staged": {
-    "*.{js,ts,jsx,tsx}": [
-      "npm run lint-check"
-    ]
-  }
 }
