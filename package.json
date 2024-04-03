@@ -26,7 +26,7 @@
     "build": "npx cross-env BROWSER=none && rollup -c",
     "clean": "rm -rf dist && rm -f ucp-npm-components*.tgz",
     "pack": "npm run clean && npm run build && npm pack",
-    "test": "echo \"Error: no test specified\" && exit 0",
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
   "author": "",
   "license": "MIT",
