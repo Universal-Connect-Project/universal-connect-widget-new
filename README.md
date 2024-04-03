@@ -28,7 +28,7 @@ export default App;
 ## Contributing
 ### Install dependencies
 ```
-npm i
+npm ci
 ```
 
 ### Bundle files for npm package
