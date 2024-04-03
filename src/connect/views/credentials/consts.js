@@ -1,4 +1,0 @@
-export const CREDENTIAL_FIELD_TYPES = {
-  PASSWORD: 1,
-  LOGIN: 3,
-}

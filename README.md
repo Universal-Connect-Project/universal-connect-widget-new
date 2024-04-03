@@ -1,40 +1,79 @@
-# The Universal-Connect-Widget
+# Universal Connect Widget
 
-*To jump straight to how to run the code in this repo, go [here](SETUP.md)*
+## Usage
+Currently, this library has a very small use-case. It is not in a state where 
+it can be used outside of the Universal Connect Project ecosystem. 
 
-Whether you are an established financial institution with existing data providers or a one person startup the Universal Connect Project (UCP) is the right way to connect to financial services like banks, credit unions and wealth managers. 
+As such, the only way to utilize the Universal Connect Widget--which this 
+library encapsulates--is to run the [UCP-App service](https://github.com/Universal-Connect-Project/ucw-app),
+which depends on this NPM Package.
 
-## Why Use an Internet Protocol? 
-The UCP is an internet protocol for financial services data that builds upon the WC3 Standard Verifiable Credentials (https://www.w3.org/TR/vc-data-model/). When you connect to services through an Internet protocol instead of through a proprietary API you get: 
+Eventually, this library will be refactored in such a way that allows passing configuration
+into the Component via props, etc., and thus allowing for customization, and use in other projects. 
 
-* Choice: The financial data you receive is always in the same format no matter what company you use. This means you can route your requests to another provider without making any changes to your code. 
-Fault Tolerance: If one company or service goes offline your requests are automatically re-routed so your application stays up and your users stay happy. 
-* Simple integration: Simply display the open source UCP Widget and it handles all of the user interaction needed to retrieve bank data from any data provider. 
-* Performance: Data connection speeds vary across data providers and individual financial institutions with the same data provider. The UCP monitors the speed of connections and uses an open source algorithm to route your traffic to the fastest available connection. 
-* Privacy: Some data providers have terms that allow them to reuse the data they collect. The UCP allows you to control when those providers are used. 
-* Cost: Access to banking data is often one of the most expensive parts of building a fintech app. The UCP will route to the cheapest connection that meets your criteria. 
+The use-case described above is currently not possible, but as this is a work-in-progress, and as this is 
+the eventual goal, we will leave this usage in place for future reference.
 
-## What data providers can I use with the UCP? 
-The UCP is currently routing traffic to MX, Finicity, Sophtron and Akoya, but if you would like to use another provider open an issue on our GitHub page and a member of the community will enable it for you. One of our community goals is to have global coverage by the end of 2025. 
+_Keep in mind that the API for this component is also a WIP, and is subject to change._
+```typescript jsx
+import { ConnectWidget } from "@ucp-npm/components";
 
-## Why Verifiable Credentials? 
-The UCP combines the FDX data standard with Verifiable Credentials to provide running code (a reference implementation) that eliminates ambiguity and embeds proof that the data has not been tampered with after it is created. 
-Previous attempts to simplify access to financial services data have used an industry consortium approach rather than an Internet Standards approach. While Internet Standards take longer to establish the success of the Internet itself shows the benefits justify the extra work. 
-Verifiable Credentials allow users to take possession of data without gaining the ability to modify the data. This enables the ideal “one click to instantly share” user experience that wasn’t previously possible. 
-As the Internet itself is upgraded to improve privacy, security and reliability using Verifiable Credentials, new applications for financial data will be unlocked. By adopting Verifiable Credentials now companies gain a competitive advantage. 
-Verifiable Credentials are being embraced by regulators because they allow users to take possession of their data and completely control how that data is shared.
+function App(): ReactElement {
+  return <ConnectWidget config={{...}}/>;
+}
 
-## Get started
+export default App;
+```
 
-- For a hosted demo, check out [this demo site](https://demo.universalconnectproject.org/loader.html?env=https://widget.universalconnectproject.org)
-- For detailed info on how to run the three pieces that make up the UCW project, refer to [the UCW-example README.md](https://github.com/Universal-Connect-Project/ucw-example/blob/main/README.md) 
-- For info on how to specifically run the code in this repository, please refer to [SETUP.md](SETUP.md)
-- For the API service, please refer to [the UCW-app README.md](https://github.com/Universal-Connect-Project/ucw-app/blob/main/README.md)
-- Usage documentation [openapi](openapi/)
+## Contributing
+### Install dependencies
+```
+npm i
+```
+
+### Bundle files for npm package
+_(uses [RollupJS](https://rollupjs.org/))_
+
+```
+npm run build
+```
+
+### Testing package locally 
+
+Use the following command to build a compressed version of the npm module, which 
+can then be used to test locally. 
+
+```
+npm run pack
+```
+
+Once you have run `npm run pack`, you can then reference the local build/package in 
+a different project using the following command:
+
+```
+npm i <path-to-your-local-compressed-version>
+```
+
+Here is an example of how to use this locally, from another project:
+
+```
+npm i /Users/user.name/projects/ucw-npm-package/ucp-npm-components-0.0.1.tgz
+```
+
+You would run the above command in the root directory of another project.
+
+## Publishing
+
+### Publish to NPM
+Publishing is limited to members of the Universal Connect Project [organization](https://www.npmjs.com/settings/ucp-npm/members).
+
+Prior to publishing, you should update your `package.json` file with the new version number. Follow the semver spec: https://semver.org
+
+To publish to NPM, use the following commands:
+```
+npm publish
+```
 
 
-### Terms explained
-- `Provider` (`data aggregation provider`): Data providers/issuers of financial data.
-- `Institution`: financial institutions such as a bank or a utility company.
-- `Customer`: the end-user.
-- `Member`/`Connection`: logins owned by the `Customer` to an `Institution`.
+## Learn more
+[https://universalconnectproject.org/](https://universalconnectproject.org/)
