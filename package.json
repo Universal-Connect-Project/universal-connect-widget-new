@@ -1,31 +1,37 @@
 {
-  "name": "universal-connect-widget",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "server": "npx ts-node server/server.js",
-    "dev": "npx cross-env BROWSER=none react-app-rewired start",
-    "build": "react-app-rewired build",
-    "build-android": "npx cross-env mobile=true react-app-rewired build && npx cap sync android",
-    "build-ios": "npx cross-env mobile=true react-app-rewired build && npx cap sync ios",
-    "test-watch": "react-app-rewired test --watchAll",
-    "test": "jest --no-coverage",
-    "coverage": "npm test -- --verbose --coverage --watchAll",
-    "test-clear": "npm test -- --clearCache",
-    "keys": "node -e 'console.log(`key: ${crypto.randomBytes(32).toString(\"hex\")}\n IV: ${crypto.randomBytes(16).toString(\"hex\")}`)'",
-    "lint": "eslint ./src --fix --ext .js,.jsx,.ts,.tsx",
-    "lint-check": "eslint --cache --ext .js,.jsx,.ts,.tsx",
-    "precommit": "lint-staged",
-    "prepare": "husky"
+  "name": "@ucp-npm/components",
+  "version": "0.0.6-beta",
+  "description": "Universal Connect Project - Connect Widget Component",
+  "keywords": [
+    "fintech",
+    "banking",
+    "financial",
+    "universal connect foundation",
+    "universal connect project",
+    "connect",
+    "widget",
+    "react",
+    "component"
+  ],
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
+  "scripts": {
+    "build": "npx cross-env BROWSER=none && rollup -c",
+    "clean": "rm -rf dist && rm -f ucp-npm-components*.tgz",
+    "pack": "npm run clean && npm run build && npm pack",
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "author": "",
+  "license": "MIT",
   "dependencies": {
-    "@babel/eslint-parser": "^7.18.2",
-    "@babel/polyfill": "^7.0.0",
     "@babel/runtime": "^7.14.6",
-    "@capacitor-community/http": "^1.4.1",
-    "@capacitor/android": "4.7.3",
-    "@capacitor/core": "^4.7.3",
-    "@capacitor/ios": "4.7.3",
     "@kyper/button": "^3.2.0",
     "@kyper/card": "^2.0.0",
     "@kyper/icon": "^1.15.0",
@@ -40,8 +46,10 @@
     "@kyper/tokenprovider": "^3.2.0",
     "@kyper/userfeedback": "^1.2.0",
     "@kyper/utilityrow": "^1.4.0",
+    "@types/lodash": "^4.14.202",
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
+    "@types/react-intl": "^3.0.0",
     "@types/redis": "^4.0.11",
     "assert-browserify": "^2.0.0",
     "axios": "^1.6.0",
@@ -51,7 +59,6 @@
     "crypto-browserify": "^3.12.0",
     "crypto-js": "^4.2.0",
     "d3": "^7.8.5",
-    "d3-legacy": "npm:d3@^3.5.6",
     "date-fns": "^2.29.3",
     "dompurify": "^2.3.6",
     "dotenv": "^16.3.1",
@@ -68,12 +75,10 @@
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.40",
     "mx-design-tokens": "^10.5.0",
-    "mx-react-components": "^8.4.2",
+    "mx-react-components": "^8.7.0",
     "phoenix": "^1.2.1",
     "posthog-js": "^1.57.2",
     "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
     "react-intl": "^2.3.0",
     "react-redux": "^7.1.0",
     "redis": "^4.6.12",
@@ -83,61 +88,31 @@
     "redux-thunk": "^2.1.0",
     "reselect": "^2.5.4",
     "rxjs": "^6.6.2",
-    "stream-browserify": "^3.0.0",
     "typescript": "^5.2.2",
     "url": "^0.11.3"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "devDependencies": {
-    "@babel/core": "^7.21.3",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.18.6",
-    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
-    "@babel/preset-env": "^7.23.8",
-    "@babel/preset-react": "^7.18.6",
-    "@capacitor/cli": "^4.8.1",
-    "@types/jest": "^29.5.11",
-    "@types/mocha": "^10.0.6",
-    "babel-plugin-js-logger": "^1.0.17",
-    "cross-env": "^7.0.3",
-    "customize-cra": "^1.0.0",
-    "cypress": "^13.6.2",
-    "eslint-config-mx": "^4.0.0",
-    "eslint-plugin-cypress": "^2.15.1",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-redux-namespaced-actions": "^1.0.0",
-    "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^5.5.1",
-    "husky": "^9.0.10",
-    "lint-staged": "^15.2.2",
-    "prettier": "^3.2.5",
-    "react-app-rewired": "^2.2.1",
-    "react-scripts": "^5.0.1",
-    "terser-webpack-plugin": "^5.3.7",
-    "ts-import-plugin": "^3.0.0",
-    "ts-jest": "^29.1.2",
-    "url-loader": "^4.1.1"
+    "@babel/core": "^7.24.4",
+    "@babel/preset-react": "^7.23.3",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-inject": "^5.0.5",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-replace": "^5.0.5",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/react": "^18.2.61",
+    "np": "^10.0.0",
+    "rollup": "^4.12.0",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-polyfill-node": "^0.13.0",
+    "rollup-plugin-svg-import": "^3.0.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3"
   },
-  "lint-staged": {
-    "*.{js,ts,jsx,tsx}": [
-      "npm run lint-check"
-    ]
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   }
 }
