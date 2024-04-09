@@ -2,12 +2,12 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import babel from '@rollup/plugin-babel';
-import svg from 'rollup-plugin-svg-import';
 import json from '@rollup/plugin-json';
 import replace from '@rollup/plugin-replace';
 import nodePolyfills from 'rollup-plugin-polyfill-node';
 import terser from '@rollup/plugin-terser';
 import { dts } from 'rollup-plugin-dts';
+import image from '@rollup/plugin-image';
 
 import packageJson from './package.json' assert { type: 'json' };
 
@@ -28,7 +28,6 @@ export default [
         tsconfig: './tsconfig.json',
         exclude: ['**/node_modules/**', '**/dist/**'],
       }),
-      svg(),
       json(),
       replace({
         preventAssignment: true,
@@ -62,6 +61,7 @@ export default [
         dedupe: ['d3', 'util', 'lodash', 'react', 'react-dom'], // <-- This could be improved...not sure if it is needed
       }),
       nodePolyfills(),
+      image(),
     ],
   },
   {

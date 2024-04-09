@@ -36,8 +36,6 @@ window.logger = {
   }
 }
 
-console.log('App config:', window.app);
-
 Store.dispatch({
   type: WidgetProfileActionTypes.WIDGET_PROFILE_LOADED,
   payload: window.app.config
