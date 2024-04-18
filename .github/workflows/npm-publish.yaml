@@ -1,4 +1,4 @@
-name: 'Publish Docker image'
+name: 'Publish NPM Package'
 
 on:
   push:
@@ -8,7 +8,6 @@ on:
 
 jobs:
   push_to_registry:
-    name: 'Push Docker image to Docker Hub'
     runs-on: ubuntu-latest
 
     steps:
@@ -27,4 +26,4 @@ jobs:
         run: | 
           npm ci
           npm run build
-          npm run publish
+          npm publish
