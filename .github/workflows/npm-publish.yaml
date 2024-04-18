@@ -21,10 +21,12 @@ jobs:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: 'Install dependencies, build and publish'
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: | 
+      - name: 'Dependencies and tests'
+        run: |
           npm ci
-          npm run build
-          npm publish
+          npm test
+
+      - name: 'Install dependencies, build and publish'
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
