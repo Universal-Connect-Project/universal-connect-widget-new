@@ -3,8 +3,7 @@ name: 'Auto-publish NPM Package'
 on:
   push:
     branches:
-      - '**'
-#      - main
+      - main
 
 jobs:
   push_to_registry:

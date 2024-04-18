@@ -1,6 +1,6 @@
 {
   "name": "@ucp-npm/components",
-  "version": "0.0.8-test",
+  "version": "0.0.8-beta",
   "description": "Universal Connect Project - Connect Widget Component",
   "keywords": [
     "fintech",
