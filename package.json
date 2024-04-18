@@ -26,7 +26,7 @@
     "build": "npx cross-env BROWSER=none && rollup -c",
     "clean": "rm -rf dist && rm -f ucp-npm-*.tgz",
     "pack": "npm run clean && npm run build && npm pack",
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0"
   },
   "author": "",
   "license": "MIT",
@@ -103,7 +103,6 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/react": "^18.2.61",
-    "np": "^10.0.0",
     "rollup": "^4.12.0",
     "rollup-plugin-dts": "^6.1.0",
     "rollup-plugin-polyfill-node": "^0.13.0",
