@@ -7,15 +7,9 @@ on:
 #      - main
 
 jobs:
-  setup-env:
-    name: 'Load ENV Vars'
-    uses: ./.github/workflows/setup-env.yml
-    secrets: inherit
-
   push_to_registry:
     name: 'Push Docker image to Docker Hub'
     runs-on: ubuntu-latest
-    needs: [setup-env]
 
     steps:
       - name: 'Check out the repo'
