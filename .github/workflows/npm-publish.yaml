@@ -1,4 +1,4 @@
-name: 'Publish NPM Package'
+name: 'Auto-publish NPM Package'
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
 
 jobs:
   push_to_registry:
+    name: 'Setup, and publish'
     runs-on: ubuntu-latest
 
     steps:
