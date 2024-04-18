@@ -3,7 +3,8 @@ name: 'Publish Docker image'
 on:
   push:
     branches:
-      - main
+      - '**'
+#      - main
 
 jobs:
   setup-env:
@@ -25,9 +26,11 @@ jobs:
         with:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
+
       - name: 'Install dependencies, build and publish'
-      - run: npm ci
-      - run: npm run build
-      - run: npm run publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: | 
+          npm ci
+          npm run build
+          npm run publish
