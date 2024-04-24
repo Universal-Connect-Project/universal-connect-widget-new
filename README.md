@@ -19,7 +19,7 @@ _Keep in mind that the API for this component is also a WIP, and is subject to c
 import { ConnectWidget } from "@ucp-npm/components";
 
 function App(): ReactElement {
-  return <ConnectWidget config={{...}}/>;
+  return <ConnectWidget />;
 }
 
 export default App;
