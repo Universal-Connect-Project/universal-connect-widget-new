@@ -31,13 +31,16 @@ jobs:
           if [[ $versions == *"$compare"* ]]; then
             # Check if the compare is an exact match
             if [[ $versions == *"$compare""']"* || $versions == *"$compare""',"* ]]; then
-              echo "Version found $compare"
               echo "version_found=true" >> $GITHUB_ENV
+              echo "=========================================================================="
+              echo "Version found $compare. Please update version in package.json"
+              echo "=========================================================================="
+              exit 1
             else
-              echo "Version not found $compare"
               echo "version_found=false" >> $GITHUB_ENV
+              echo "Version not found $compare"
             fi
           else
-            echo "Version not found $compare"
             echo "version_found=false" >> $GITHUB_ENV
+            echo "Version not found $compare"
           fi
