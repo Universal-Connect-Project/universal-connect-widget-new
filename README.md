@@ -2,7 +2,7 @@
 
 ## Usage
 Currently, this library has a very small use-case. It is not in a state where 
-it can be used outside of the Universal Connect Project ecosystem. 
+it can be used outside the Universal Connect Project ecosystem. 
 
 As such, the only way to utilize the Universal Connect Widget--which this 
 library encapsulates--is to run the [UCP-App service](https://github.com/Universal-Connect-Project/ucw-app),
