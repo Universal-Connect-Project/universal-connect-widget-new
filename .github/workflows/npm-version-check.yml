@@ -35,6 +35,7 @@ jobs:
               echo "Version $compare is already published."
               echo "Please update 'version' in package.json. Good to go."
               echo "=========================================================================="
+              echo "::error::Version $compare is already published."
               exit 1
             else
               echo "version_found=false" >> $GITHUB_ENV
