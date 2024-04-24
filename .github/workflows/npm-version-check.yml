@@ -38,9 +38,9 @@ jobs:
               exit 1
             else
               echo "version_found=false" >> $GITHUB_ENV
-              echo "Version not found $compare"
+              echo "Version $compare not found in NPM"
             fi
           else
             echo "version_found=false" >> $GITHUB_ENV
-            echo "Version not found $compare"
+            echo "Version $compare not found in NPM"
           fi
