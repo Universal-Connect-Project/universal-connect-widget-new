@@ -20,8 +20,10 @@ jobs:
       - name: 'Check version not published'
         run: |
           package_version=$(npm pkg get version --workspaces=false | tr -d \")
+          echo "$package_version"
           npm_versions=$(npm view @ucp-npm/components versions)
           compare=$package_version
+          echo "$compare"
           # Convert JSON array to string
           versions=$(echo "$npm_versions" | tr -d '\n' | tr -d ' ' | tr -d '"')
           
@@ -29,10 +31,13 @@ jobs:
           if [[ $versions == *"$compare"* ]]; then
             # Check if the compare is an exact match
             if [[ $versions == *"$compare""']"* || $versions == *"$compare""',"* ]]; then
+              echo "Version found $compare"
               echo "version_found=true" >> $GITHUB_ENV
             else
+              echo "Version not found $compare"
               echo "version_found=false" >> $GITHUB_ENV
             fi
           else
+            echo "Version not found $compare"
             echo "version_found=false" >> $GITHUB_ENV
           fi
