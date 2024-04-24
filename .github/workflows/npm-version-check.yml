@@ -3,6 +3,7 @@ name: 'NPM Version Check'
 on: pull_request
 
 jobs:
+  name: 'NPM Version Check'
   push_to_registry:
     runs-on: ubuntu-latest
 
@@ -17,7 +18,7 @@ jobs:
           node-version: 'lts/*'
           check-latest: true
 
-      - name: 'Check version not published'
+      - name: 'Check if version is published'
         run: |
           package_version=$(npm pkg get version --workspaces=false | tr -d \")
           npm_versions=$(npm view @ucp-npm/components versions)
