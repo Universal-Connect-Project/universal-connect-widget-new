@@ -39,9 +39,8 @@ npm run build
 ```
 ### Local development
 
-Testing changes to a project that is normally published to NPM can be tricky, but it is definitely possible.
-
-Especially given the fact that you are using the NPM package code inside another project. 
+Testing changes to a project that is normally published to NPM can be tricky, especially given the fact that you 
+are using the NPM package code inside another project, but it is definitely possible.
 
 Here are some tips on how to do this. 
 
