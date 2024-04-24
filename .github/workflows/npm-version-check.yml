@@ -3,8 +3,8 @@ name: 'NPM Version Check'
 on: pull_request
 
 jobs:
-  name: 'NPM Version Check'
   push_to_registry:
+    name: 'NPM Version Check'
     runs-on: ubuntu-latest
 
     steps:
