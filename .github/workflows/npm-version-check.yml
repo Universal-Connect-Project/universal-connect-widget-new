@@ -33,7 +33,7 @@ jobs:
               echo "version_found=true" >> $GITHUB_ENV
               echo "=========================================================================="
               echo "Version $compare is already published."
-              echo "Please update 'version' in package.json."
+              echo "Please update 'version' in package.json. Good to go."
               echo "=========================================================================="
               exit 1
             else
