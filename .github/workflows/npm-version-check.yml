@@ -56,9 +56,9 @@ jobs:
         if: env.version_found == 'false'
         run: |
           {
-            echo '### Version Check Results'
-            echo 'Version check successful. 🚀🎉'
-            echo 'Version $VERSION will be published to NPMJS.com on merge to main.'
+            echo "### Version Check Results"
+            echo "Version check successful. 🚀🎉"
+            echo "Version $VERSION will be published to NPMJS.com on merge to main."
           } >> $GITHUB_STEP_SUMMARY
 
       - name: Update Summary if version found
