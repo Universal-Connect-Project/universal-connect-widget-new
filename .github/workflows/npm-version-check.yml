@@ -35,7 +35,7 @@ jobs:
               echo "Version $compare is already published."
               echo "Please update 'version' in package.json. Good to go."
               echo "=========================================================================="
-              echo "::error::Version $compare is already published."
+              echo "::error::Version $compare already exists on NPMJS.com. Please update the version in 'package.json' and try again."
               exit 1
             else
               echo "version_found=false" >> $GITHUB_ENV
