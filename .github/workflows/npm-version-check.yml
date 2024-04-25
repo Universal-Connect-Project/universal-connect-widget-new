@@ -40,8 +40,10 @@ jobs:
             else
               echo "version_found=false" >> $GITHUB_ENV
               echo "Version $compare not found in NPM"
+              echo "::notice::Version check successful. Version $compare will be published to NPMJS.com on merge to main."
             fi
           else
             echo "version_found=false" >> $GITHUB_ENV
             echo "Version $compare not found in NPM"
+              echo "::notice::Version check successful. Version $compare will be published to NPMJS.com on merge to main."
           fi
