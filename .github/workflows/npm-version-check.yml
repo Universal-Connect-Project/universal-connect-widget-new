@@ -35,15 +35,31 @@ jobs:
               echo "Version $compare is already published."
               echo "Please update 'version' in package.json. Good to go."
               echo "=========================================================================="
-              echo "::error::Version $compare already exists on NPMJS.com. Please update the version in 'package.json' and try again."
-              exit 1
+              #echo "::error::Version $compare already exists on NPMJS.com. Please update the version in 'package.json' and try again."
             else
               echo "version_found=false" >> $GITHUB_ENV
-              echo "Version $compare not found in NPM"
-              echo "::notice::Version check successful. Version $compare will be published to NPMJS.com on merge to main."
+              #echo "::notice::Version check successful. Version $compare will be published to NPMJS.com on merge to main."
             fi
           else
             echo "version_found=false" >> $GITHUB_ENV
-            echo "Version $compare not found in NPM"
-              echo "::notice::Version check successful. Version $compare will be published to NPMJS.com on merge to main."
+            #echo "::notice::Version check successful. Version $compare will be published to NPMJS.com on merge to main."
           fi
+
+      - name: Update Summary if version not found
+        if: env.version_found == 'false'
+        run: |
+          {
+            echo '### Version Check Results'
+            echo 'Version check successful. 🚀🎉'
+            echo 'Version $compare will be published to NPMJS.com on merge to main.'
+          } >> $GITHUB_STEP_SUMMARY
+
+      - name: Update Summary if version found
+        if: env.version_found == 'true'
+        run: |
+          {
+            echo '### Version Check Results'
+            echo 'Version $compare already exists on NPMJS.com. 😬🫠'
+            echo 'Please update the version property in 'package.json' and try again.'
+          } >> $GITHUB_STEP_SUMMARY
+          exit 1
