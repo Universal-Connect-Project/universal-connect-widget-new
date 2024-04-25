@@ -21,8 +21,11 @@ jobs:
       - name: 'Check if version is published'
         run: |
           package_version=$(npm pkg get version --workspaces=false | tr -d \")
+          echo "version=$package_version" >> $GITHUB_ENV
+          
           npm_versions=$(npm view @ucp-npm/components versions)
           compare=$package_version
+        
           # Convert JSON array to string
           versions=$(echo "$npm_versions" | tr -d '\n' | tr -d ' ' | tr -d '"')
           
@@ -38,28 +41,34 @@ jobs:
               #echo "::error::Version $compare already exists on NPMJS.com. Please update the version in 'package.json' and try again."
             else
               echo "version_found=false" >> $GITHUB_ENV
+              echo "Version $compare not found in NPM"
               #echo "::notice::Version check successful. Version $compare will be published to NPMJS.com on merge to main."
             fi
           else
             echo "version_found=false" >> $GITHUB_ENV
+            echo "Version $compare not found in NPM"
             #echo "::notice::Version check successful. Version $compare will be published to NPMJS.com on merge to main."
           fi
 
       - name: Update Summary if version not found
+        env:
+          VERSION: ${{ env.version }}
         if: env.version_found == 'false'
         run: |
           {
             echo '### Version Check Results'
             echo 'Version check successful. 🚀🎉'
-            echo 'Version $compare will be published to NPMJS.com on merge to main.'
+            echo 'Version $VERSION will be published to NPMJS.com on merge to main.'
           } >> $GITHUB_STEP_SUMMARY
 
       - name: Update Summary if version found
+        env:
+          VERSION: ${{ env.version }}
         if: env.version_found == 'true'
         run: |
           {
             echo '### Version Check Results'
-            echo 'Version $compare already exists on NPMJS.com. 😬🫠'
+            echo 'Version $VERSION already exists on NPMJS.com. 😬🫠'
             echo 'Please update the version property in 'package.json' and try again.'
           } >> $GITHUB_STEP_SUMMARY
           exit 1
