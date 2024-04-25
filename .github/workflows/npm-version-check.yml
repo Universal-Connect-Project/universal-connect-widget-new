@@ -21,7 +21,7 @@ jobs:
       - name: 'Check if version is published'
         run: |
           package_version=$(npm pkg get version --workspaces=false | tr -d \")
-          echo "version=$package_version" >> $GITHUB_ENV
+          echo "VERSION=$package_version" >> $GITHUB_ENV
           
           npm_versions=$(npm view @ucp-npm/components versions)
           compare=$package_version
@@ -33,25 +33,25 @@ jobs:
           if [[ $versions == *"$compare"* ]]; then
             # Check if the compare is an exact match
             if [[ $versions == *"$compare""']"* || $versions == *"$compare""',"* ]]; then
-              echo "version_found=true" >> $GITHUB_ENV
+              echo "VERSION_FOUND=true" >> $GITHUB_ENV
               echo "=========================================================================="
               echo "Version $compare is already published."
               echo "Please update 'version' in package.json. Good to go."
               echo "=========================================================================="
               #echo "::error::Version $compare already exists on NPMJS.com. Please update the version in 'package.json' and try again."
             else
-              echo "version_found=false" >> $GITHUB_ENV
+              echo "VERSION_FOUND=false" >> $GITHUB_ENV
               echo "Version $compare not found in NPM"
               #echo "::notice::Version check successful. Version $compare will be published to NPMJS.com on merge to main."
             fi
           else
-            echo "version_found=false" >> $GITHUB_ENV
+            echo "VERSION_FOUND=false" >> $GITHUB_ENV
             echo "Version $compare not found in NPM"
             #echo "::notice::Version check successful. Version $compare will be published to NPMJS.com on merge to main."
           fi
 
       - name: Update Summary if version not found
-        if: env.version_found == 'false'
+        if: env.VERSION_FOUND == 'false'
         run: |
           {
             echo "### Version Check Results"
@@ -60,7 +60,7 @@ jobs:
           } >> $GITHUB_STEP_SUMMARY
 
       - name: Update Summary if version found
-        if: env.version_found == 'true'
+        if: env.VERSION_FOUND == 'true'
         run: |
           {
             echo "### Version Check Results"
