@@ -51,24 +51,20 @@ jobs:
           fi
 
       - name: Update Summary if version not found
-        env:
-          VERSION: ${{ env.version }}
         if: env.version_found == 'false'
         run: |
           {
             echo "### Version Check Results"
             echo "Version check successful. 🚀🎉"
-            echo "Version $VERSION will be published to NPMJS.com on merge to main."
+            echo "Version $version will be published to NPMJS.com on merge to main."
           } >> $GITHUB_STEP_SUMMARY
 
       - name: Update Summary if version found
-        env:
-          VERSION: ${{ env.version }}
         if: env.version_found == 'true'
         run: |
           {
             echo "### Version Check Results"
-            echo "Version $VERSION already exists on NPMJS.com. 😬🫠"
+            echo "Version $version already exists on NPMJS.com. 😬🫠"
             echo "Please update the 'version' property in 'package.json' and try again."
           } >> $GITHUB_STEP_SUMMARY
           exit 1
