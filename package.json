@@ -1,6 +1,6 @@
 {
   "name": "@ucp-npm/components",
-  "version": "0.0.10-beta",
+  "version": "0.0.12-beta",
   "description": "Universal Connect Project - Connect Widget Component",
   "keywords": [
     "fintech",
@@ -23,7 +23,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "npx cross-env BROWSER=none && rollup -c",
+    "build": "rollup -c",
     "clean": "rm -rf dist && rm -f ucp-npm-*.tgz",
     "pack": "npm run clean && npm run build && npm pack",
     "test": "echo \"No test specified\" && exit 0"
