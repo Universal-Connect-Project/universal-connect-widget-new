@@ -26,6 +26,10 @@ jobs:
           npm ci
           npm test
 
+      - name: 'Build the package'
+        run: |
+          npm run build
+
       - name: 'Publish to NPM'
         uses: JS-DevTools/npm-publish@v3
         with:
