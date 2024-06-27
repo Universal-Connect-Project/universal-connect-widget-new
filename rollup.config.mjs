@@ -9,7 +9,7 @@ import terser from '@rollup/plugin-terser';
 import { dts } from 'rollup-plugin-dts';
 import image from '@rollup/plugin-image';
 
-import packageJson from './package.json' assert { type: 'json' };
+import packageJson from './package.json' with { type: 'json' };
 
 export default [
   {
