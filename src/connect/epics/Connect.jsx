@@ -40,10 +40,6 @@ export const loadConnect = actions$ =>
         request$ = loadConnectFromMemberConfig(config)
       } else if (config.current_institution_guid || config.current_institution_code) {
         request$ = loadConnectFromInstitutionConfig(config)
-      } else if (config.mode === VERIFY_MODE && config.current_microdeposit_guid) {
-        request$ = loadConnectFromMicrodepositConfig(config)
-      } else if (config.mode === VERIFY_MODE) {
-        request$ = loadConnectInVerify(config)
       } else {
         request$ = of({ config })
       }
@@ -117,16 +113,16 @@ export const selectInstitution = (actions$, state$) =>
  * Load the data required for loading connect in verify. This is just the
  * accounts, members, and institutions. Pass the mode along for the reducer
  */
-function loadConnectInVerify(config) {
-  return zip(FireflyAPI.loadAccounts(), FireflyAPI.loadInstitutions()).pipe(
-    map(([{ members, accounts }, institutions]) => ({
-      config,
-      members,
-      accounts,
-      institutions,
-    })),
-  )
-}
+// function loadConnectInVerify(config) {
+//   return zip(FireflyAPI.loadAccounts(), FireflyAPI.loadInstitutions()).pipe(
+//     map(([{ members, accounts }, institutions]) => ({
+//       config,
+//       members,
+//       accounts,
+//       institutions,
+//     })),
+//   )
+// }
 
 /**
  * Load the data for the configured member. Dispatch an error if mode is in
