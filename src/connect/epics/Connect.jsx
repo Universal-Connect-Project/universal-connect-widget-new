@@ -109,20 +109,6 @@ export const selectInstitution = (actions$, state$) =>
     ),
   )
 
-/**
- * Load the data required for loading connect in verify. This is just the
- * accounts, members, and institutions. Pass the mode along for the reducer
- */
-// function loadConnectInVerify(config) {
-//   return zip(FireflyAPI.loadAccounts(), FireflyAPI.loadInstitutions()).pipe(
-//     map(([{ members, accounts }, institutions]) => ({
-//       config,
-//       members,
-//       accounts,
-//       institutions,
-//     })),
-//   )
-// }
 
 /**
  * Load the data for the configured member. Dispatch an error if mode is in
@@ -170,19 +156,6 @@ function loadConnectFromInstitutionConfig(config) {
       }
       return { institution, config }
     }),
-  )
-}
-
-/**
- * Load the microdeposit that is configured for the connect. Microdeposit status will be used to
- * determine initial step(SEARCH or MICRODEPOSITS) in the reducer.
- *
- * @param  {Object} config - the client config for the widget
- * @return {Observable}
- */
-function loadConnectFromMicrodepositConfig(config) {
-  return from(FireflyAPI.loadMicrodepositByGuid(config.current_microdeposit_guid)).pipe(
-    map(microdeposit => ({ microdeposit, config })),
   )
 }
 
