@@ -14,7 +14,6 @@ into the Component via props, etc., and thus allowing for customization, and use
 The use-case described above is currently not possible, but as this is a work-in-progress, and as this is 
 the eventual goal, we will leave this usage in place for future reference.
 
-_Keep in mind that the API for this component is also a WIP, and is subject to change._
 ```typescript jsx
 import { ConnectWidget } from "@ucp-npm/components";
 
@@ -115,6 +114,15 @@ To publish to NPM, use the following commands:
 ```
 npm publish
 ```
+
+## Troubleshooting
+
+### `[!] SyntaxError: Unexpected token ‘with’`
+
+If you see this error, it is likely that you are using an outdated version of Node.js. Please update to the latest LTS 
+version. More specifically, the following versions support the `with` keyword. 
+
+`v22.0.0+, v21.0.0+, v20.10.0+, v18.20.0+`
 
 ## Learn more
 [https://universalconnectproject.org/](https://universalconnectproject.org/)
