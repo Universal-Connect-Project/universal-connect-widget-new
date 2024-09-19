@@ -129,7 +129,7 @@ export const Connecting = props => {
         sendPostMessage('connect/memberConnected', {
           user_guid: currentMember.user_guid,
           member_guid: currentMember.guid,
-          provider: currentMember.provider,
+          aggregator: currentMember.aggregator,
         })
       } else if (hasAtriumAPI && isMobileWebview === true) {
         PostMessage.setWebviewUrl(`atrium://memberAdded/${currentMember.guid}`)
@@ -137,7 +137,7 @@ export const Connecting = props => {
         PostMessage.send('mxConnect:memberAdded', {
           member_guid: currentMember.guid,
           user_guid: currentMember.user_guid,
-          provider: currentMember.provider,
+          aggregator: currentMember.aggregator,
         })
       }
 

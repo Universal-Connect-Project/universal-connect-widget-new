@@ -36,7 +36,7 @@ export const REFERRAL_SOURCES = {
 export const OAUTH_ERROR_REASONS = {
   CANCELLED: 'CANCELLED', // User cancelled/rejected/denied oauth
   DENIED: 'DENIED', // User couldn't authenticate
-  IMPEDED: 'IMPEDED', // User needs to resolve an issue at the provider
-  PROVIDER_ERROR: 'PROVIDER_ERROR', // Error from the oauth provider
+  IMPEDED: 'IMPEDED', // User needs to resolve an issue at the aggregator
+  PROVIDER_ERROR: 'PROVIDER_ERROR', // Error from the oauth aggregator
   SERVER_ERROR: 'SERVER_ERROR', // MX error
 }
