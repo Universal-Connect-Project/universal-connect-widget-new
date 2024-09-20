@@ -27,7 +27,7 @@ export const initialize = (member, updatedMember, config) => {
   }
 
   // sequential jobs
-  if (['mx_int', 'mx'].includes(member.provider)) {
+  if (['mx_int', 'mx'].includes(member.aggregator)) {
     if (config.include_identity === true || jobType === "aggregate_identity_verification") {
       jobs = [...jobs, { type: JOB_TYPES.IDENTIFICATION, status: JOB_STATUSES.PENDING }]
     }
