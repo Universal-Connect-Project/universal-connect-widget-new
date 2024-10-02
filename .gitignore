@@ -6,7 +6,7 @@ build/
 packed/
 
 # Test pack files
-ucp-npm-components*.tgz
+ucp-npm-*.tgz
 
 # Logs
 logs/
