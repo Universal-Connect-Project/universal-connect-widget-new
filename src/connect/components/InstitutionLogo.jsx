@@ -1,7 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { css } from '@mxenabled/cssinjs'
 import { useTokens } from '@kyper/tokenprovider'
+import { css } from '@mxenabled/cssinjs'
+import PropTypes from 'prop-types'
 
 export const InstitutionLogo = ({
   alt = 'Institution logo image',
@@ -14,19 +13,20 @@ export const InstitutionLogo = ({
   const tokens = useTokens()
   const backUpSrc =
     'https://content.moneydesktop.com/storage/MD_Assets/serenity/default_institution_logo.png'
-  const src = institution.logo_url || `https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/100x100/${institution.guid}_100x100.png`
+  const src = institution.logo_url || backUpSrc
   return (
     <img
       alt={alt}
       className={`${css({
-        borderRadius: tokens.BorderRadius.Medium,
+        borderRadius: tokens.BorderRadius.Medium
       })} kyper-institutionlogo ${className}`}
-      onError={e => (e.target.src = backUpSrc)}
+      onError={(e) => (e.target.src = backUpSrc)}
       src={src}
       style={{
-        ...style, 
-        maxHeight:size, 
-        maxWidth:size}}
+        ...style,
+        maxHeight: size,
+        maxWidth: size
+      }}
       {...rest}
     />
   )
@@ -46,7 +46,7 @@ InstitutionLogo.propTypes = {
    * The image width and height both get the value from the size prop
    */
   size: PropTypes.number,
-  style: PropTypes.object,
+  style: PropTypes.object
 }
 
 InstitutionLogo.displayName = 'InstitutionLogo'
