@@ -95,7 +95,11 @@ export const Connecting = props => {
     if (pollingState.previousResponse != null && statusChanged) {
       sendPostMessage('connect/memberStatusUpdate', {
         member_guid: pollingState.currentResponse.guid,
+        raw_status: pollingState.currentResponse.raw_status,
+        aggregator: pollingState.currentResponse.aggregator,
+        selected_account_id: pollingState.currentResponse.selected_account_id,
         connection_status: pollingState.currentResponse.connection_status,
+        institution: pollingState.currentResponse.institution_guid || pollingState.currentResponse.institution_guid,
       })
       dispatch(
         sendAnalyticsEvent({
@@ -130,6 +134,7 @@ export const Connecting = props => {
           user_guid: currentMember.user_guid,
           member_guid: currentMember.guid,
           aggregator: currentMember.aggregator,
+          selected_account_id: currentMember.selected_account_id,
         })
       } else if (hasAtriumAPI && isMobileWebview === true) {
         PostMessage.setWebviewUrl(`atrium://memberAdded/${currentMember.guid}`)
@@ -138,6 +143,7 @@ export const Connecting = props => {
           member_guid: currentMember.guid,
           user_guid: currentMember.user_guid,
           aggregator: currentMember.aggregator,
+          selected_account_id: currentMember.selected_account_id,
         })
       }
 
